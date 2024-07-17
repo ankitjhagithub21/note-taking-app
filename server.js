@@ -8,8 +8,11 @@ const port = 3000
 connectDb()
 
 
+
 app.set('view engine','ejs')
 app.use(express.static(path.join(__dirname+"/public")))
+
+app.use(express.json())
 app.use("/api/notes",noteRouter)
 
 app.get('/', (req, res) => {
