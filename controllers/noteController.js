@@ -1,10 +1,19 @@
 const Note = require("../model/noteModel")
 
-const addNote = async(req,res) =>{
+const addNote = async(req,res) => {
+
     try{
+        const {title,desc} = req.body;
+        if(!title || !desc){
+            return res.json({
+                success:false,
+                message:"All fields are required."
+            })
+        }
+
         const note = new Note({
-            title:req.body.title,
-            desc:req.body.desc
+           title,
+           desc
         })
 
         await note.save()
@@ -15,6 +24,21 @@ const addNote = async(req,res) =>{
             success:false,
             message:error.message
         })
+    }
+}
+
+const getAllNotes = async(req,res)=>{
+    try{
+        const notes = await Note.find({})
+        res.json({
+            success:true,
+            notes
+        })
+    }catch(error){
+        res.status(500).json({
+            success:false,
+            message:error.message
+        })  
     }
 }
 
@@ -35,6 +59,7 @@ const removeNote = async(req,res)=>{
             success:true,
             message:"Note deleted."
         })
+       
 
 
 
@@ -61,6 +86,7 @@ const updateNote = async(req,res)=>{
 
 module.exports = {
     addNote,
+    getAllNotes,
     removeNote,
     updateNote
 }

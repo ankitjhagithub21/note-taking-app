@@ -12,15 +12,18 @@
     <div class="min-h-screen w-full bg-zinc-800 text-white p-5">
         <div class="lg:w-1/2 w-full mx-auto ">
             <h2 class="text-3xl font-bold mb-5">Note Taking App</h2>
-            <form  method="post">
+            <form id="noteForm">
                 <input type="text" name="title" class="outline-none w-full mb-3 px-4 rounded-lg py-2 bg-zinc-700"
                     id="title" placeholder="Enter title" required>
                 <textarea name="desc" id="desc" rows="5" placeholder="Enter description"
                     class="w-full rounded-lg px-4 py-2 outline-none resize-none bg-zinc-700" required></textarea>
                 <button class="bg-green-500 px-4 py-2 outline-none rounded-lg">Add</button>
             </form>
+            
         </div>
+        <div id="notesContainer" class="mt-5 flex flex-wrap"></div>
     </div>
+    <script src="/js/script.js"></script>
 </body>
 
 </html>
