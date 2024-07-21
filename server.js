@@ -22,6 +22,11 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/note/:id', (req, res) => {
+  res.render('note')
+})
+
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

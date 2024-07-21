@@ -46,6 +46,7 @@ const displayNote = (note) => {
     <h3 class="text-xl font-bold">${note.title}</h3>
     <p>${note.desc}</p>
     <button class="px-2 py-1 text-sm rounded-lg bg-red-500 delete-btn">Delete</button>
+    <a class="px-2 py-1 text-sm rounded-lg bg-blue-500 edit-btn" href="/note/${note._id}">Edit</a>
     </div>
     `;
 

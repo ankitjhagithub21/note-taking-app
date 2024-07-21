@@ -72,6 +72,31 @@ const removeNote = async(req,res)=>{
 
 }
 
+const getNoteById = async(req,res) =>{
+    try{
+        const noteId = req.params.id;
+        const note = await Note.findById(noteId)
+        if(!note){
+            return  res.status(404).json({
+                success:false,
+                message:"Note not found."
+            })
+        }
+
+
+        res.status(200).render({
+            success:true,
+            note
+        })
+
+    }catch(error){
+        res.status(500).json({
+            success:false,
+            message:error.message
+        })
+    }
+}
+
 const updateNote = async(req,res)=>{
     try{
 
@@ -88,5 +113,6 @@ module.exports = {
     addNote,
     getAllNotes,
     removeNote,
-    updateNote
+    updateNote,
+    getNoteById
 }
